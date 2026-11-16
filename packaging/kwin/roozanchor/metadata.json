@@ -1,0 +1,12 @@
+{
+  "KPlugin": {
+    "Name": "Rooz · Bottom-right anchor",
+    "Description": "Keeps Rooz compact panel at the bottom-right of KDE's usable work area",
+    "Id": "roozanchor",
+    "Version": "1.1",
+    "License": "MIT"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}

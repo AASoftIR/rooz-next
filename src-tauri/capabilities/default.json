@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Minimal native window permissions for Rooz",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

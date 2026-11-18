@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Rooz",
+  "version": "0.4.11",
+  "identifier": "ir.aasoft.rooz",
+  "build": {
+    "beforeDevCommand": "sh scripts/serve.sh",
+    "devUrl": "http://127.0.0.1:4173",
+    "frontendDist": "../web"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "security": {
+      "csp": "default-src 'self' tauri: asset:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' ipc: http://ipc.localhost; font-src 'self' data:"
+    },
+    "windows": [
+      {
+        "label": "main",
+        "title": "Rooz — Daily Companion",
+        "width": 438,
+        "height": 704,
+        "minWidth": 390,
+        "minHeight": 560,
+        "visible": false,
+        "center": false,
+        "resizable": false,
+        "decorations": false,
+        "transparent": true,
+        "shadow": false,
+        "alwaysOnTop": false,
+        "skipTaskbar": false
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "appimage"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.png"
+    ],
+    "shortDescription": "Beautiful local-first daily planner",
+    "category": "Productivity"
+  }
+}

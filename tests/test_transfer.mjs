@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+globalThis.window={};
+globalThis.localStorage={getItem:()=>null,setItem:()=>{}};
+const {serializeExport,parseImport}=await import('../web/transfer.js');
+const empty={tasks:[],notes:[],routines:[],routine_items:[],routine_completions:[],routine_item_completions:[],settings:{}};
+const example={...empty,tasks:[{id:5,title:'Read "quoted", pages',details:'My text, with comma',due_date:'2026-11-18',due_time:'18:00',category:'Study',done:false,priority:1,recurrence:'none',remind_before:5}],routines:[{id:1,title:'Daily routine',details:'Morning',category:'Personal',schedule_kind:'daily',start_date:'2026-01-01',enabled:true,rule_json:'{}'}],routine_items:[{id:8,routine_id:1,title:'Sport',details:'',depth:1,linked_routine_id:null,weekdays_mask:127}],routine_item_completions:[{id:9,item_id:8,occurrence_date:'2026-11-18',completed_at:1000}]};
+const json=serializeExport(example,'json');
+assert.equal(parseImport(json.content,json.name).routine_item_completions.length,1);
+assert.equal(parseImport(json.content,json.name).routine_items[0].depth,1);
+const csv=serializeExport(example,'tasks-csv');
+assert.equal(parseImport(csv.content,csv.name).tasks[0].title,'Read "quoted", pages');
+assert.equal(parseImport(csv.content,csv.name).tasks[0].details,'My text, with comma');
+assert.match(serializeExport(example,'routines-csv').content,/Daily routine/);
+assert.match(serializeExport(example,'markdown').content,/Sport/);
+assert.match(serializeExport(example,'ics').content,/BEGIN:VCALENDAR/);
+assert.throws(()=>parseImport('not a backup','file.md'),/Import/);
+console.log('PASS portable JSON and CSV round-trip, Markdown, ICS');

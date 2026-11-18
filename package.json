@@ -1,0 +1,11 @@
+{
+  "name": "rooz-next",
+  "version": "0.4.10",
+  "private": true,
+  "description": "Rooz - Native Tauri desktop planner with a zero-runtime-dependency UI",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:web": "tsc",
+    "preview": "python3 -m http.server 4173 --directory web"
+  }
+}

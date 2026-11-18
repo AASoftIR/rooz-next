@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Rooz
+Name[fa]=روز
+GenericName=Daily Planner
+GenericName[fa]=برنامه‌ریز روزانه
+Comment=Local-first planner, calendar, tasks and reminders
+Comment[fa]=برنامه‌ریز شخصی با یادآوری و تقویم
+Exec=rooz
+Icon=ir.aasoft.rooz
+Terminal=false
+Categories=Office;Utility;
+StartupNotify=true
